@@ -1,0 +1,19 @@
+[
+  {
+    "PolicyName": "ReadOnlyS3CloudWatchPolicy",
+    "Arn": "arn:aws:iam::816069160759:policy/ReadOnlyS3CloudWatchPolicy",
+    "RiskyStatements": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:Get*",
+          "s3:List*",
+          "cloudwatch:Get*",
+          "cloudwatch:List*"
+        ],
+        "Resource": "*"
+      }
+    ],
+    "AIExplanation": "This policy grants overly broad access.  The `Resource: '*'` allows access to *all* S3 buckets and CloudWatch resources across the entire AWS account. This exposes the entire organization to potential data breaches and unauthorized metric viewing, significantly increasing risk.  A much more restrictive policy with specific bucket and metric resource names is necessary.\n"
+  }
+]
